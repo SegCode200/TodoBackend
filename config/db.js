@@ -7,7 +7,10 @@ export const dbConfig = async () => {
   // Connect to MongoDB
   try {
     await mongoose
-      .connect(URL)
+      .connect(URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
       .then(() => {
         console.log("Connected to MongoDB");
       })
