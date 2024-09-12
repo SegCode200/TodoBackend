@@ -14,11 +14,17 @@ const createTask = new Schema(
       enum: ["Low", "Medium", "High"],
       default: "Medium",
     },
-    startTime: Date,
-    endTime: Date,
+    startTime: {
+      type: String,
+      required: true,
+    },
+    endTime: {
+      type: String,
+      required: true,
+    },
     DateandTime: {
       type: Date,
-      default: Date.now,
+      required: true,
     },
     completed: {
       type: Boolean,
