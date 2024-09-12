@@ -23,7 +23,7 @@ const createTask = new Schema(
       required: true,
     },
     DateandTime: {
-      type: Date,
+      type: String,
       required: true,
     },
     completed: {

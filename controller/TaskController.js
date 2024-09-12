@@ -35,6 +35,7 @@ export const AddTask = async (req, res) => {
         message: "User not found",
       });
     }
+    new Date(dateAndTime);
 
     const Task = await TaskModel.create({
       catergory,
