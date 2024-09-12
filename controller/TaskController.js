@@ -107,7 +107,7 @@ export const DeleteTask = async (req, res) => {
       return res.status(404).json({ message: "Task not found" });
     }
     // Remove the task from the user's task array using ObjectId comparison
-    user.tasks = user.tasks.filter(
+    user.task = user.task.filter(
       (task) => !task.equals(mongoose.Types.ObjectId(taskId))
     );
 
