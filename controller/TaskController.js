@@ -108,7 +108,7 @@ export const DeleteTask = async (req, res) => {
     }
     // Remove the task from the user's task array using ObjectId comparison
     user.task = user.task.filter(
-      (task) => !task.equals(mongoose.Types.ObjectId(taskId))
+      (task) => !task.equals(new mongoose.Types.ObjectId(taskId))
     );
 
     // Save the updated user model
