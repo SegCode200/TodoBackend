@@ -106,7 +106,12 @@ export const DeleteTask = async (req, res) => {
     if (!task) {
       return res.status(404).json({ message: "Task not found" });
     }
-    await user.task.filter((task) => task.id !== taskId);
+    // Remove the task from the user's task array using ObjectId comparison
+    user.tasks = user.tasks.filter(
+      (task) => !task.equals(mongoose.Types.ObjectId(taskId))
+    );
+
+    // Save the updated user model
     await user.save();
     return res.status(200).json({ message: "Task deleted successfully" });
   } catch (error) {
