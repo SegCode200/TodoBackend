@@ -59,33 +59,14 @@ export const AddTask = async (req, res) => {
 export const EditTask = async (req, res) => {
   try {
     const { taskId, userId } = req.params;
-    const {
-      title,
-      description,
-      catergory,
-      priority,
-      date,
-      startTime,
-      endTime,
-    } = req.body;
 
     const user = await UserModel.findById(userId);
     if (!user) {
       return res.status(403).json({ message: "User not found" });
     }
-    const task = await TaskModel.findByIdAndUpdate(
-      taskId,
-      {
-        title,
-        description,
-        catergory,
-        priority,
-        DateandTime: date,
-        startTime,
-        endTime,
-      },
-      { new: true }
-    );
+    const task = await TaskModel.findByIdAndUpdate(taskId, req.body, {
+      new: true,
+    });
 
     if (!task) {
       return res.status(404).json({ message: "Task not found" });
